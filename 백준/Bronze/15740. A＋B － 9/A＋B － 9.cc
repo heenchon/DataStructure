@@ -1,7 +1,7 @@
 #include<iostream>
 
 int main() {
-    int a, b =0;
+    long long a, b =0;
     std::cin >> a;
     std::cin >> b;
     std::cout << a+b;
