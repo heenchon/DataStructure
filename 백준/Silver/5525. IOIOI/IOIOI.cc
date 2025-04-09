@@ -1,32 +1,38 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
     int n, m; 
-    string s, answer = "";
-    cin >> n >> m>> s;
-    int count =0;
+    string s;
+    cin >> n >> m >> s;
+    int count = 0;
+    int answer = 0;
+    char next = 'I';
     
-    for(int i =0; i<n; ++i) {
-        answer += "OI";
-    }
-    
-    for(int i=0;i<m;++i){
-        if(s[i] == 'I') {
-            string temp = "";
-            for(int j =1; j<=n*2; ++j) {
-                if(i+j >= s.size()) {
-                    break;
-                }
-                temp += s[i+j];
+    for (int i = 0; i < m; ++i) {
+        if (s[i] == next) {
+            count++;
+            if (next == 'I') {
+                next = 'O';
+            } else {
+                next = 'I';
             }
-            if(temp == answer) {
-                count++;
+        } else {
+            if (s[i] == 'I') {
+                count = 1;
+                next = 'O';
+            } else {
+                count = 0;
+                next = 'I';
             }
+        }
+        
+        if (count >= n * 2 + 1 && count % 2 != 0) {
+            answer++;
         }
     }
     
-    cout << count;
+    cout << answer;
     return 0;
 }
